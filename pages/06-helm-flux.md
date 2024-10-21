@@ -79,8 +79,8 @@ transition: slide-left
 layout: two-cols
 ---
 # **Values and Configuration**
-- Helm uses a `values.yaml` file to define the default configuration of the chart.
-- Users can override the values by passing a custom `values.yaml` file or using the `--set` flag with key-value pairs when installing/upgrading.
+- Helm uses a <span v-mark.underline.orange>values.yaml</span> file to define the default configuration of the chart.
+- Users can <span v-mark.underline.orange>override the values</span> by passing a custom `values.yaml` file or using the `--set` flag with key-value pairs when installing/upgrading.
 
 ```bash
 helm install my-release my-chart \
@@ -199,6 +199,24 @@ transition: slide-left
 - **Continuous Reconciliation**: Kubernetes <span v-mark.underline.orange>operators</span> continuously monitor the system state and reconcile it to match the desired state defined in Git.
 
 This approach ensures <span v-mark.underline.orange>consistency</span>, <span v-mark.underline.orange>reliability</span>, and <span v-mark.underline.orange>easy rollbacks</span>.
+---
+layout: image
+transition: slide-left
+image: ./images/devops.png
+backgroundSize: contain
+---
+# DevOps
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div v-click>
+
+## NOPE - we don't do that!
+
+</div>
 
 ---
 layout: left
@@ -219,13 +237,13 @@ These metrics help optimize <span v-mark.underline.orange>DevOps</span> practice
 layout: left
 transition: slide-left
 ---
-# Flux
+# Flux (Operator)
 Flux is a <span v-mark.underline.orange>continuous delivery tool</span> for Kubernetes that automates the deployment of changes from a Git repository.
 
-- **GitOps Automation**: Flux continuously syncs Kubernetes clusters with configurations stored in Git repositories, ensuring the cluster reflects the desired state.
+- **<span v-mark.underline.orange>GitOps</span> Automation**: Flux continuously syncs Kubernetes clusters with configurations stored in Git repositories, ensuring the cluster reflects the desired state.
 - **Automated Image Updates**: It can automatically update container images in your Git repository when new versions are available.
 - **Multi-tenancy Support**: Flux supports managing multiple environments or teams with different Kubernetes namespaces or clusters from a single Git repository.
-- **Integration with CI/CD Pipelines**: Flux integrates with CI/CD systems to trigger deployments based on new commits or changes in infrastructure code.
+- **Integration with CI/CD Pipelines**: Flux integrates with <span v-mark.underline.orange>CI/CD systems</span> to trigger deployments based on new commits or changes in infrastructure code.
 - **Rollback and Disaster Recovery**: Flux keeps a history of changes, allowing for easy rollback to a previous state in case of errors or failures.
 
 These functions make Flux a powerful tool for managing Kubernetes deployments using GitOps principles.
@@ -340,8 +358,8 @@ transition: slide-left
 ---
 # Flux and SOPS
 
-- **GitOps-friendly Secret Management**: With SOPS, you can store encrypted secrets directly in Git repositories.
-- **Seamless Decryption**: Flux can automatically decrypt secrets encrypted with SOPS during deployment.
+- **GitOps-friendly Secret Management**: Encrypted secrets are stored <span v-mark.underline.orange>directly in Git repositories</span>.
+- **Seamless Decryption**: Flux can automatically <span v-mark.underline.orange>decrypt</span> secrets encrypted with SOPS during deployment.
 - **Key Management Integration**: SOPS supports various key management systems (KMS), such as AWS KMS, GCP KMS, and GnuPG.
 - **Automatic Sync and Update**: When secrets are updated in Git (still encrypted), Flux will automatically detect changes, decrypt the secrets using SOPS, and apply them to the Kubernetes cluster, ensuring consistency and security.
 - **Auditability**: All changes, including secret updates, are tracked in Git, allowing for a full audit trail while still keeping the actual content encrypted and secure.
@@ -399,10 +417,4 @@ backgroundSize: contain
 
 - Our own services are build with jsonnet.
 - Infrastucture service are defined by helm charts.
-
-
-
-
-
-
 

@@ -2,11 +2,7 @@
 layout: center
 ---
 
-<div v-click>
-
 ## PLATFORM
-
-</div>
 
 <br>
 <br>

@@ -76,58 +76,17 @@ Platform
 src: './pages/08-dapr.md'
 ---
 <!--
-structure
+dapr
 -->
 ---
-layout: default
-transition: slide-left
-src: './pages/09-spring-di.md'
+src: './pages/09-one-hub.md'
 ---
 <!--
-spring di
+one-hub
 -->
 ---
-layout: two-cols
-transition: slide-left
-src: './pages/10-modules.md'
+src: './pages/10-conclusion.md'
 ---
 <!--
-modules
+conslusion
 -->
----
-layout: two-cols
-transition: slide-left
-src: './pages/11-modules2.md'
----
-<!--
-modules2
--->
----
-layout: center
-transition: slide-left
-src: './pages/12-legacy-app.md'
----
-<!--
-code
--->
----
-layout: center
-transition: slide-left
-src: './pages/13-pusher-improver.md'
-background: './images/pusher-improver2.jpeg'
-
----
-<!--
-pusher
--->
----
-layout: default
-transition: slide-left
-src: './pages/14-conclusion.md'
-background: './images/wrangler-fig.webp'
-
----
-<!--
-pusher
--->
----
