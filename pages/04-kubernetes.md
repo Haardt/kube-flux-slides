@@ -426,6 +426,3 @@ allowing secure management of critical information in your applications.
 
 - kubectl get configs
 - kubectl get secrets
-
-
-

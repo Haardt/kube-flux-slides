@@ -1,3 +1,16 @@
+---
+transition: slide-left
+layout: center
+background: './images/manifests.webp'
+---
+
+# How to manage all this files?
+
+---
+layout: default
+transition: slide-left
+---
+
 # **What is Helm?**
 
 - Helm is a **package manager** for Kubernetes, used to define, install, and manage Kubernetes applications as **charts**.
@@ -169,8 +182,75 @@ background: ./images/chaos-with-helm.webp
 
 <div v-click>
 
-# not without flux :)!
+# not without flux (GitOps) :)!
 
 </div>
+
+
+---
+layout: left
+transition: slide-left
+---
+# GitOps
+
+- **Infrastructure as Code (IaC)**: GitOps manages infrastructure and application deployments using version-controlled code in Git repositories.
+- **Git as the Source of Truth**: All changes to infrastructure and applications are made through Git, ensuring a clear audit trail and version history.
+- **Automated Deployments**: Changes pushed to the repository trigger automated deployment processes, keeping environments in sync with the Git state.
+- **Continuous Reconciliation**: Kubernetes <span v-mark.underline.orange>operators</span> continuously monitor the system state and reconcile it to match the desired state defined in Git.
+
+This approach ensures <span v-mark.underline.orange>consistency</span>, <span v-mark.underline.orange>reliability</span>, and <span v-mark.underline.orange>easy rollbacks</span>.
+
+---
+layout: left
+transition: slide-left
+---
+# DORA
+
+The **DORA Metrics** assess software development and delivery performance through four key metrics:
+
+- **Deployment Frequency**: Measures how often code is deployed to production, indicating delivery speed.
+- **Lead Time for Changes**: Tracks the time from code commit to production, reflecting development efficiency.
+- **Change Failure Rate**: Shows the percentage of deployments causing production issues, indicating release stability.
+- **Mean Time to Recovery (MTTR)**: Measures how quickly teams recover from failures, reflecting system reliability.
+
+These metrics help optimize <span v-mark.underline.orange>DevOps</span> practices for faster, more stable software delivery.
+
+---
+layout: left
+transition: slide-left
+---
+# Flux
+
+---
+layout: left
+transition: slide-left
+---
+# Flux manifests
+
+---
+layout: left
+transition: slide-left
+---
+# Flux HelmRelease Manifest
+
+---
+layout: left
+transition: slide-left
+---
+# Flux 1
+
+---
+layout: left
+transition: slide-left
+---
+# Flux 2
+
+---
+layout: left
+transition: slide-left
+---
+# Flux SOPS
+
+
 
 

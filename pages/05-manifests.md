@@ -692,8 +692,51 @@ spec:
 
 ---
 transition: slide-left
-layout: center
-background: './images/manifests.webp'
+layout: default
 ---
 
-# How to manage all this files?
+# Conclusion
+
+<div v-click>
+
+- **Auto-scaling**: Automatically adjusts the number of containers based on demand.
+
+</div>
+<div v-click>
+
+- **Self-healing**: Restarts failed containers and ensures the desired state of applications.
+
+</div>
+
+<div v-click>
+
+- **Service Discovery & Load Balancing**: Provides automatic service discovery and evenly distributes traffic across containers.
+
+</div>
+
+<div v-click>
+
+- **Storage Orchestration**: Manages storage resources dynamically, supporting various storage solutions.
+
+</div>
+
+<div v-click>
+
+- **Rollouts & Rollbacks**: Seamlessly updates applications and allows easy rollbacks in case of issues.
+
+</div>
+
+<div v-click>
+
+- **Event-driven architecture**: It reacts to changes in the cluster state, automatically adjusting resources based on events.
+
+</div>
+
+
+<div v-click>
+
+- **Custom Resources**: Through Custom Resource Definitions (CRDs), Kubernetes can be extended to create custom platforms tailored to specific needs.
+
+</div>
+
+
