@@ -220,12 +220,48 @@ layout: left
 transition: slide-left
 ---
 # Flux
+Flux is a <span v-mark.underline.orange>continuous delivery tool</span> for Kubernetes that automates the deployment of changes from a Git repository.
 
+- **GitOps Automation**: Flux continuously syncs Kubernetes clusters with configurations stored in Git repositories, ensuring the cluster reflects the desired state.
+- **Automated Image Updates**: It can automatically update container images in your Git repository when new versions are available.
+- **Multi-tenancy Support**: Flux supports managing multiple environments or teams with different Kubernetes namespaces or clusters from a single Git repository.
+- **Integration with CI/CD Pipelines**: Flux integrates with CI/CD systems to trigger deployments based on new commits or changes in infrastructure code.
+- **Rollback and Disaster Recovery**: Flux keeps a history of changes, allowing for easy rollback to a previous state in case of errors or failures.
+
+These functions make Flux a powerful tool for managing Kubernetes deployments using GitOps principles.
 ---
 layout: left
 transition: slide-left
 ---
-# Flux manifests
+# Flux Git-Repository
+
+````md magic-move
+
+```yaml
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: my-app-repo
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  url: https://github.com/my-org/my-app-repo.git
+  branch: main
+```
+```yaml
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: my-app-repo
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  url: ssh://git@github.com/my-org/my-app-repo.git
+  branch: main
+  secretRef:
+    name: git-ssh-key
+```
+````
 
 ---
 layout: left
@@ -233,23 +269,139 @@ transition: slide-left
 ---
 # Flux HelmRelease Manifest
 
----
-layout: left
-transition: slide-left
----
-# Flux 1
+````md magic-move
+```yaml
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: grafana-repo
+  namespace: flux-system
+spec:
+  interval: 1h
+  url: https://grafana.github.io/helm-charts
+```
+
+```yaml
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: grafana
+      version: 6.56.5 # specify the version you want
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-repo
+        namespace: flux-system
+  values:
+# Grafana Helm-Chat values:
+    ...
+    adminUser: admin
+    adminPassword: "your-secure-password"
+    ingress:
+      enabled: true
+      ...
+```
+````
 
 ---
 layout: left
 transition: slide-left
 ---
-# Flux 2
+# Flux CLI
+
+## List all Flux resources
+```bash
+flux get all --namespace=<namespace>
+```
+<br>
+
+## Force a reconciliation of a resource:
+
+```bash
+flux reconcile <resource-type> <resource-name> --namespace=<namespace>
+```
+
+<br>
+
+## List Flux events
+```bash
+flux logs --level=info
+```
+
 
 ---
 layout: left
 transition: slide-left
 ---
-# Flux SOPS
+# Flux and SOPS
+
+- **GitOps-friendly Secret Management**: With SOPS, you can store encrypted secrets directly in Git repositories.
+- **Seamless Decryption**: Flux can automatically decrypt secrets encrypted with SOPS during deployment.
+- **Key Management Integration**: SOPS supports various key management systems (KMS), such as AWS KMS, GCP KMS, and GnuPG.
+- **Automatic Sync and Update**: When secrets are updated in Git (still encrypted), Flux will automatically detect changes, decrypt the secrets using SOPS, and apply them to the Kubernetes cluster, ensuring consistency and security.
+- **Auditability**: All changes, including secret updates, are tracked in Git, allowing for a full audit trail while still keeping the actual content encrypted and secure.
+
+We use "age" as encryption tool.
+
+---
+layout: left
+transition: slide-left
+---
+# Backup
+TODO!
+
+---
+layout: image
+transition: slide-left
+image: ./images/dev-ci.png
+backgroundSize: contain
+---
+# GitLab Dev-Build
+
+---
+layout: image
+transition: slide-left
+image: ./images/release-ci.png
+backgroundSize: contain
+---
+# GitLab Staging-Build
+
+---
+layout: image
+transition: slide-left
+---
+# Release on production
+
+- Copy files from staging repo to prod-repo
+- Commit and push changes
+- Flux sync
+
+---
+layout: image
+transition: slide-left
+image: ./images/gitlab-includes.png
+backgroundSize: contain
+---
+# GitLab Jobs/Dependencies
+
+---
+layout: image-right
+transition: slide-left
+image: ./images/git-ops-repo.png
+backgroundSize: contain
+---
+# GitLab Prod-Repo
+
+- Our own services are build with jsonnet.
+- Infrastucture service are defined by helm charts.
+
+
+
 
 
 

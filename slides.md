@@ -66,19 +66,14 @@ src: './pages/06-helm-flux.md'
 ports and adapters diagram
 -->
 ---
-layout: default
 transition: slide-left
-src: './pages/07-packages.md'
-image: './images/manifests.webp'
-backgroundSize: contain
+src: './pages/07-platform.md'
 ---
 <!--
-packages
+Platform
 -->
 ---
-layout: default
-transition: slide-left
-src: './pages/08-structure.md'
+src: './pages/08-dapr.md'
 ---
 <!--
 structure
